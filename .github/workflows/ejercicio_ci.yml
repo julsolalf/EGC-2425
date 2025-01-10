@@ -46,3 +46,14 @@ jobs:
         MARIADB_PASSWORD: uvlhub_password
       run: |
         pytest app/modules/ --ignore-glob='*selenium*'
+
+  outdated_dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install npm
+        run: npm install
+      - name: Check outdated
+        run: npm outdated reveal.js
+
